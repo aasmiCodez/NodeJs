@@ -13,8 +13,49 @@
  - **Multer** (for file uploads)
  - **JWT Authentication**
  - **XLSX** for handling Excel files
-
  ---
-
  ## Setup Instructions
  ### Clone the Repository
+ ```sh
+git clone https://github.com/aasmiCodez/NodeJs.git
+```
+### Install Dependencies
+ ```sh
+npm install
+```
+### Set up variables
+ ```sh
+DATABASE_URL=
+JWT_SECRET =
+```
+### Initialize Database
+ ```sh
+npx prisma migrate dev --name init
+npm prisma generate
+```
+### Run the Server
+ ```sh
+npm run dev
+```
+ ---
+ ## API Endpoints
+ ### Authentication
+ - Register (POST /api/auth/register)
+ - Login (POST /api/auth/login)
+### Task Management
+- Get All Tasks (GET /api/tasks)
+- Add Tasks (POST /api/tasks)
+- Update Task (PUT /api/tasks:id)
+- Delete Task (DELETE /api/tasks:id)
+### Chat Import 
+- (POST api/chat/import) in the body upload a .xlsx file
+ ---
+ ## Tools used
+ - Postman - API Testing
+ - Prisma - Database ORM
+ - VS Code - Code Editor
+
+
+
+
+
