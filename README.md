@@ -26,6 +26,7 @@ npm install
 ### Set up variables
  ```sh
 DATABASE_URL=
+Token generated using => node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 JWT_SECRET =
 ```
 ### Initialize Database
