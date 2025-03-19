@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import { login, register } from "../controllers/authController";
 const express = require("express");
 const router = express.Router();

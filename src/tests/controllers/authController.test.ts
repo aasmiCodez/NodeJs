@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 import app from "../../app";
 import prisma from "../../config/database";
 
-// ✅ Mock Prisma
 jest.mock("../../config/database", () => ({
   user: {
     create: jest.fn(),
@@ -12,13 +11,11 @@ jest.mock("../../config/database", () => ({
   },
 }));
 
-// ✅ Mock bcrypt
 jest.mock("bcryptjs", () => ({
   hash: jest.fn(),
   compare: jest.fn(),
 }));
 
-// ✅ Mock JWT
 jest.mock("jsonwebtoken", () => ({
   sign: jest.fn(),
 }));
@@ -62,7 +59,7 @@ describe.skip("Auth Routes", () => {
       (prisma.user.findUnique as jest.Mock).mockResolvedValue(mockUser);
 
       (bcrypt.compare as jest.Mock).mockImplementation((pass, hash) => {
-        return Promise.resolve(hash === "hashedPassword"); // Simulate correct password check
+        return Promise.resolve(hash === "hashedPassword");
       });
 
       (jwt.sign as jest.Mock).mockReturnValue("fake-jwt-token");

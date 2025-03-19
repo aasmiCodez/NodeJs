@@ -3,7 +3,7 @@ import httpStatus from "http-status";
 import jwt from "jsonwebtoken";
 import prisma from "../config/database";
 import logger from "../utils/logger";
-const bcrypt = require("bcrypt");
+import bcrypt from "bcryptjs";
 
 export const register = async (req: Request, res: Response) => {
   try {

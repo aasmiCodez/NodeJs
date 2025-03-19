@@ -2,7 +2,7 @@ import authRoute from "./routes/authRoute";
 import chatRoute from "./routes/chatRoute";
 import taskRoute from "./routes/taskRoute";
 import cors from "cors";
-const express = require("express");
+import express from "express";
 
 const app = express();
 app.use(express.json());

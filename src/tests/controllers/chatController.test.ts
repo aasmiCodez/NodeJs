@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import httpStatus from "http-status";
 import ExcelJS from "exceljs";
 import { importChat } from "../../controllers/chatController";
@@ -33,9 +34,9 @@ describe.skip("importChat", () => {
 
     mockWorkbook = new ExcelJS.Workbook();
     
-    // ✅ Fixed `eachRow` mock to iterate correctly
+
     mockWorksheet = {
-      eachRow: ((callback: (row: ExcelJS.Row, rowNumber: number) => void, opt?: { includeEmpty: boolean }) => {
+      eachRow: ((callback: (row: ExcelJS.Row, rowNumber: number) => void) => {
         callback(
           {
             getCell: () => ({ value: "Hello" }),
@@ -45,7 +46,7 @@ describe.skip("importChat", () => {
       }) as unknown as ExcelJS.Worksheet["eachRow"],
     };
 
-    // ✅ Fix: Directly assign instead of using `Object.defineProperty`
+
     mockWorkbook.worksheets = [mockWorksheet as ExcelJS.Worksheet];
 
     jest.spyOn(ExcelJS.Workbook.prototype.xlsx, "load").mockResolvedValue(mockWorkbook);
@@ -65,7 +66,7 @@ describe.skip("importChat", () => {
   });
 
   it("should return 400 for an invalid Excel file", async () => {
-    mockWorkbook.worksheets = []; // ✅ Fixed
+    mockWorkbook.worksheets = [];
 
     await importChat(mockReq, mockRes);
 

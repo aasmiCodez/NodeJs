@@ -26,6 +26,7 @@ export const importChat = async (req: Request, res: Response) => {
         .json({ message: "Invalid Excel file format" });
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const userID = (req as any).user.id.toString();
     const chatData: { userId: string; content: string }[] = [];
 

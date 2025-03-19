@@ -1,7 +1,7 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-import httpStatus = require("http-status");
 import logger from "../utils/logger";
+import httpStatus from "http-status";
 
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const token = req.header("Authorization")?.split(" ")[1];
@@ -15,6 +15,7 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (req as any).user = decoded;
     
     logger.info(`User authenticated: ${JSON.stringify(decoded)}`);
