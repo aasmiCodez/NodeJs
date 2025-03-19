@@ -1,10 +1,14 @@
 {
     "compilerOptions": {
-        "esModuleInterop": true,
-        "target": "ES6",
-        "module": "CommonJS",
-        "rootDir": "./src",
-        "outDir": "./dist",
-        "strict": true
+      "rootDir": "./",
+      "outDir": "./dist",
+      "strict": true,
+      "module": "CommonJS",
+      "esModuleInterop": true
+    },
+    "include": ["src", "jest.config.js"],
+    "paths": {
+      "@config/*": ["config/*"],
+      "@utils/*": ["utils/*"]
     }
-}
+  }
