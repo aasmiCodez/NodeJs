@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node src/server.ts",
     "dev": "ts-node src/server.ts",
-    "test": "jest --config jest.config.js"
+    "test": "jest --config jest.config.js",
+    "lint": "eslint . --ext .js,.ts",
+    "prepare": "husky install",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +36,12 @@
     "@types/multer": "^1.4.12",
     "@types/node": "^22.13.10",
     "@types/supertest": "^6.0.2",
+    "eslint": "^8.55.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.3.0",
     "jest": "^29.7.0",
     "nodemon": "^3.1.9",
     "prisma": "^6.5.0",
@@ -40,5 +49,8 @@
     "ts-jest": "^29.2.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --fix"
   }
 }
