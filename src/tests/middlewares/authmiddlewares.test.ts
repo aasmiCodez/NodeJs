@@ -44,7 +44,7 @@ describe("authMiddleware", () => {
 
     authMiddleware(mockReq as Request, mockRes as Response, mockNext);
 
-    expect(mockRes.status).toHaveBeenCalledWith(httpStatus.BAD_REQUEST);
+    expect(mockRes.status).toHaveBeenCalledWith(httpStatus.UNAUTHORIZED);
     expect(mockRes.json).toHaveBeenCalledWith({ message: "Invalid Token" });
     expect(logger.error).toHaveBeenCalledWith(expect.stringContaining("Invalid Token"));
   });
