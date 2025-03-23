@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import prisma from "../config/database";
 import logger from "../utils/logger";
 import { Task } from "../types/task";
+import httpStatus from "http-status";
 
 export const getTasks = async (req: Request, res: Response) => {
   try {
@@ -22,6 +23,8 @@ export const getTasks = async (req: Request, res: Response) => {
     return res.json(tasks);
   } catch (error) {
     logger.error(`Error fetching tasks: ${error}`);
-    return res.status(500).json({ message: "Internal Server Error" });
+    return res
+      .status(httpStatus.INTERNAL_SERVER_ERROR)
+      .json({ message: "Internal Server Error" });
   }
 };
