@@ -17,6 +17,8 @@ This project provides a backend API for:
 - **Multer** (for file uploads)
 - **JWT Authentication**
 - **XLSX** for handling Excel files
+- **JEST** for test cases
+- **ZOD** for route validation
 
 ---
 
